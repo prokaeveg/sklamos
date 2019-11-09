@@ -1,0 +1,88 @@
+.mainInfo {
+	display: flex;
+}
+
+.photo {
+	width: 100px;	
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+.username {
+	margin-left: 10px;
+}
+
+h2{
+    font: bold 17px sans-serif;
+    color: #666666;
+    border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 5px;
+}
+
+.info-profile {
+	margin-top: 25px;
+}
+
+.info-profile li {
+	margin-top: 10px;
+}
+
+.info-profile input {
+	height: 30px;
+	width: 350px;
+	font: 17px sans-serif;
+	margin-left: 200px;
+	border-left: 1px solid #ABABAB;
+	 border-top: 1px solid #ABABAB;
+	 border-right: 1px solid #DDDDDD;
+	 border-bottom: 1px solid #DDDDDD;
+	 padding-left: 5px;
+}
+
+.star {
+	font: 16px sans-serif;
+    color: #E35903;
+    position: absolute;
+    margin-left: 188px;
+    margin-top: 10px;
+}
+
+.info-profile  label{
+    font: 14px arial;
+    color: #464648;
+    position: absolute;
+    margin-top: 7px;
+}
+
+.form-error{
+    font:bold 14px sans-serif;
+    color: red;
+    background-color: #F7EDEF;
+    border: 2px solid #FAC8D3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.form-success{
+    font:bold 14px sans-serif;
+    color: green;
+    background-color: #baffc1;
+    border: 2px solid #B7E787;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.lk_form_submit {
+	width: 150px;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	border-radius: 4px;
+	border: 1px solid #ababab;
+	outline: none;
+}
+
+.lk_form_submit:hover {
+	background-color: #F7EDEF;
+}

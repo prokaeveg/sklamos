@@ -1,0 +1,564 @@
+
+body {
+	font-family: 'Muli', sans-serif;
+}
+
+body #openModal {
+	overflow: hidden;
+}
+
+html, body {
+	height: 100%;	
+}
+
+/*........................
+
+NAV
+
+.......................*/
+
+
+.logo {
+	font-size: 22px;
+	color: #041122;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-left: 15px
+}
+
+.nav-wrapper {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.navigation {
+	font-size: 15px;
+	font-weight: 600;
+	padding-top: 5px;
+}
+
+.navigation a{
+	color: #52575D;
+}
+
+.navigation-link {
+	text-decoration: none !important;
+	margin-right: 30px;
+}
+
+.navigation-link:hover  {
+	color: #f72464;
+	text-decoration: underline !important;
+}
+
+.logout {
+	color: #52575D; 
+}
+
+.logout a{
+	color: #52575D;
+	font-size: 16px;
+}
+
+.logout p{
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.search {
+	height: auto;
+	padding: 0;
+	display: flex;
+	position: relative;
+	padding-top: 7px;
+}
+
+.search .icon{
+  position: absolute;
+  top: 20%;
+  left: 2px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
+.input-search {
+	width: 70%;
+	height: 25px;
+	outline: none;
+	padding-left: 20px;
+	border-radius: 4px;
+}
+
+.input-search:focus, .input-search:active {
+	outline:none;
+    background: #ffffff;
+}
+
+.button-search {
+	width: 28%;
+	font-size: 13px;
+	height: 25px;
+	cursor: pointer;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 4px;
+	background: rgb(247, 36, 100);
+	box-shadow: 0 -2px rgb(220,36,100) inset;
+	transition: .3s
+}
+
+.button-search:hover {
+	background: rgb(220,36,100);
+}
+
+.button-search:active {
+  background: rgb(200,36,100);
+  box-shadow: 0 3px rgb(200,36,100) inset;
+}
+
+.block-user {
+	width: 150px;
+	position: absolute;
+	z-index: 100;
+	margin-top: 35px;
+	background-color: white;
+	box-shadow: 0 0 15px #dbdbdb;
+	display: none;
+}
+
+.block-user ul {
+	margin-top: 10px;
+}
+
+.block-user li {
+	margin-left: 8px;
+	margin-top: 6px;
+}
+
+.block-user a {
+	text-decoration: none;
+	font: bold 13px sans-serif;
+	color: #57678c;
+}
+
+.corner i {
+	width: 17px;
+	height: 17px;
+	float: left;
+	margin-right: 6px;
+	font-size: 17px;
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+.fa-shield {
+	color: #dbdbdb;
+}
+
+.block-user a:hover {
+	border-bottom: 1px dashed #ef662b;
+	cursor: pointer;
+	color: #ef662b;
+	margin-bottom: 4px;
+}
+
+.block-user img {
+	float: left;
+	margin-right: 8px;
+	margin-top: 4px;
+}
+
+
+.lk {
+	padding-top: 10px;
+	color: #52575D;
+	position: relative;
+}
+
+
+.log-in {
+	content: '';
+	position: absolute;
+	text-align: center;
+	left: 1.4em;
+	font-size: 14px;
+	top: 11px;
+}
+
+.log-in a{
+	color: #52575D;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: 'Muli', sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99;
+	display: none;
+}
+
+.modalDialog:target {
+	display: block;
+}
+
+.modalDialog div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: #fff;
+
+}
+
+.close {
+	background: #606061;
+	color: #fff;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.close:hover {
+	background: #00d9ff;
+}
+
+.cart {
+	padding-top: 10px;
+	color: #52575D;
+	position: relative;
+}
+
+.cart a{
+	text-decoration: none;
+	color: #52575D;
+}
+
+.cart-number {
+	width: 19px;
+	height: 19px;
+	background-color: #f72464;
+	border-radius: 10px;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 1px;
+	position: absolute;
+	left: 7px;
+	top: 22px;
+}
+
+
+/*.....................
+
+HEADER
+
+....................*/
+
+
+.header	{
+	height: 30px;
+	background-color: #52575D;
+	color: #fff;
+	padding-top: 3px;
+}
+
+
+/*..........................
+
+PRODUCTS
+
+................*/
+
+.product {
+	height: 250px;
+	margin-top: 10px;
+	padding-top: -200px;
+}
+
+.product:last-child {
+	margin-bottom: 25px;
+}
+
+.products {
+	height: 250px;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #fff;
+}
+
+
+.mainTitle {
+	position: absolute;
+	z-index: 90;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.mainTitle img{
+	transition: all 0.3s ease;
+}
+
+.mainTitle img:hover{
+	transform: scale(1.05);
+}
+
+.mainTitle h3::before {
+    content: '';
+    width: 80px;
+    height: 3px;
+    position: absolute;
+    background: #FFF;
+    display: block;
+    margin-top: -3px;
+    transition:  0.2s;
+}
+
+.products:hover .mainTitle h3:before   {
+    width: 0px;
+}
+
+.mainTitle h3::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    position: absolute;
+    background: #FFF;
+    display: block;
+    margin-top: -3px;
+    transition:  0.3s;
+}
+
+.products:hover .mainTitle h3:after   {
+    width: 80px;
+}
+
+
+
+.mainTitle h3 {
+	color: #fff;
+	text-align: left;
+	margin: 20px;
+	margin-top: 40px;
+	font-size: 1.8em;
+	text-transform: none;
+	text-decoration: none;
+	padding-bottom: 0;
+	position: absolute;
+	z-index: 95;
+	top: 0;
+	left: 0;
+}
+
+
+.product-secondary {
+	width: 100%;
+	height: 150px;
+	padding-left: 0;
+	padding-right: 0;
+	overflow: hidden;
+	position: relative;
+	border: 2px solid #fff;
+}
+
+.product-small .row .col-md-6 {
+	padding: 0;
+}
+
+.product-small:last-child{
+	margin-bottom: 30px;
+}
+
+.secondaryTitle {
+	position: absolute;
+	z-index: 95;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.secondaryTitle h4 {
+	color: #fff;
+	margin: 20px;
+	margin-top: 40px;
+	font-size: 1.8em;
+	text-transform: none;
+	text-decoration: none;
+	padding-bottom: 0;
+	font-size: 1.2em;
+}
+
+.secondaryTitle .Left h4:before {
+	content: '';
+	width: 80px;
+	height: 3px;
+	background: #fff;
+	display: block;
+	margin-top: -3px;
+	position: absolute;
+	left: 20;
+	top: 0;
+	transition: 0.3s;
+}
+
+.secondaryTitle .Right h4:before {
+	content: '';
+	width: 80px;
+	height: 3px;
+	background: #fff;
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 0;
+	transition: 0.3s;
+}
+
+.product-secondary:hover .Right h4:before{
+	width: 0px;
+}
+
+.product-secondary:hover .Left h4:before{
+	width: 0px;
+}
+
+.secondaryTitle .Left h4:after {
+	content: '';
+	width: 0px;
+	height: 3px;
+	background: #fff;
+	display: block;
+	margin-top: -3px;
+	position: absolute;
+	left: 20;
+	bottom: 0;
+	transition: 0.3s;
+}
+
+.secondaryTitle .Right h4:after {
+	content: '';
+	width: 0px;
+	height: 3px;
+	background: #fff;
+	display: block;
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+	transition: 0.3s;
+}
+
+.product-secondary:hover .Right h4:after{
+	width: 80px;
+}
+
+.product-secondary:hover .Left h4:after{
+	width: 80px;
+}
+
+.Right {
+	text-align: right;
+	position: relative;
+}
+
+.Left {
+	text-align: left;
+	position: relative;
+}
+
+/*....................
+
+FOOTER AND PREFOOTER
+
+.................*/
+
+ul {
+	padding: 0;
+}
+
+ul li{
+	list-style-type: none;
+}
+
+.footer p{
+	text-align: justify;
+}
+
+.footer-top {
+	padding: 20px 0px;
+	background: #3e3e3e;
+	font-size: 14px;
+}
+
+.footer-top a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.footer-bottom {
+	color: #fff;
+	background: #333;
+	padding: 10px 0px;
+	font-size: 15px;
+}
+
+.footer-bottom a {
+	color: #16a4ec;
+}
+
+.notof {
+	text-align: center;
+	font-size: 10px;
+}
+
+
+/* sm-устройства (больше или равно 576px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* CSS для: 576px <= ширины <= 767px */
+}
+
+/* md-устройства (больше или равно 768px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .logo	 {
+  	font-size: 17px;
+  	margin-left: 0;
+  }
+  .navigation {
+  	font-size: 13px;
+  }
+  .navigation-link {
+  	margin-right: 10px;
+  }
+  .input-search {
+  	float: left;
+  }
+}
+ 
+/* lg-устройства (больше или равно 992px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.container {
+		width: 85%;
+	}
+	.navigation {
+		font-size: 14px;
+	}
+	.logout a {
+		font-size: 14px;
+	}
+}
+ 

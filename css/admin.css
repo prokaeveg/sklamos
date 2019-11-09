@@ -1,0 +1,198 @@
+.main_title_admin {
+	font-family: Roboto;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.container_user {
+	width: 660px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+/*
+
+
+
+	ADDING PRODUCTS
+
+
+
+*/
+
+.add_item a{
+	color: #000;
+	font: 20px sans-serif;
+	padding: 15px;
+	position: relative;
+}
+
+
+.add_item {
+	margin-bottom: 40px;
+}
+
+a.button {
+ background: #911341;
+ color: #ffffff;
+ font-size: 18px;
+ text-transform: uppercase;
+ display: block;
+ text-align: center;
+ margin-top: 30px;
+ margin-bottom: 10px;
+ position: relative;
+ z-index: 1;
+ overflow: hidden;
+ border-bottom: 4px solid #e3276c;
+ width: 350px;
+ height: 50px;
+}
+a.button:hover {
+ color: #ffffff;
+}
+/*LEFT */
+.button::before, .button::after {
+ content: "";
+ display: block;
+ width: 100%;
+ height: 100%;
+ background: #ba2756;
+ position: absolute;
+ top: 0;
+ left: -100%;
+ transition: .3s;
+ z-index: -1;
+}
+/* BOTTOM */
+.button::after {
+ background: #e3276c;
+ top: 100%;
+ left: 0;
+}
+.button:hover::before {
+ left: 0;
+}
+.button:hover::after {
+ top: 0;
+ transition-delay: 0.2s;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.error_admin_roots {
+	margin-top: 100px;
+	margin-left: 40px;
+}
+
+.user_image {
+	position: absolute;
+	top: 0;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.front_user_info {
+	position: absolute;
+	bottom: 0;
+	text-align: middle;
+}
+
+/*
+
+
+		USER CARDS
+
+
+*/
+
+.cards  li {
+	margin-left: 20px;
+	float: left;
+	position: relative;
+}
+
+.card_user {
+	width: 200px;
+	height: 400px;
+	perspective: 1000px;
+	display: block;
+}
+
+.backside {
+	background-color: #ffc4c4;
+	transform: rotateY(180deg);
+}
+
+.frontside {
+	background-color: #ff5454;
+}
+
+.frontside,
+.backside {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: block;
+	transition: 1s;
+	backface-visibility: hidden;
+	border-radius: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.frontside:hover,
+.backside:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card_user:hover .frontside {
+	transform: rotateY(180deg);
+
+}
+
+.card_user:hover .backside {
+	transform: rotateY(360deg);
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+label {
+	padding-left: 20px;
+}
+label::before {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+	margin-right: 4px;
+	border-radius: 50%;
+	transition: .3s;
+}
+
+input[type="checkbox"]:checked + label::before {
+	background-color: green;
+}
+
+.frontside {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	font-size: 30px;
+}
+
+.backside_info{
+	padding-left: 8px;
+	padding-top: 30px;
+}

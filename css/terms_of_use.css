@@ -1,0 +1,31 @@
+body {
+	font-family: 'Muli', sans-serif;
+	font-size: 14px;
+}
+
+.containerAbout {
+	width: 60%;
+	margin: auto;
+}
+
+.content {
+	border: 1px solid #ddd;
+	padding: 10px 15px;
+	margin-bottom: 20px;
+	min-height: 100%;
+}
+
+.page-header {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.page-header h1{
+	color: #16a4ec;
+	border-bottom: 1px solid #eee;
+}
+
+.header {
+	height: 60px;
+	background-color: #fff;
+}

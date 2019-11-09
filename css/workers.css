@@ -1,0 +1,38 @@
+body {
+	font-family: 'Muli', sans-serif;
+}
+
+.workers_photo .row {
+	overflow: hidden;
+}
+
+.worker-png {
+	width: 250px;
+	min-height: 600px;	
+}
+
+.worker {
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 	20px;
+}
+
+.worker-text {
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: #fff;
+	z-index: 99;
+	width: 100%;
+	text-shadow: 2px 2px 2px #000;
+}
+
+.worker img {
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	z-index: 1;
+	position: relative;
+}

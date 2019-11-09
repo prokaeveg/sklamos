@@ -1,0 +1,44 @@
+.form-signin {
+	max-width: 400px;
+	padding: 15px;
+	margin: auto;
+	position: relative;
+}
+
+.question p, a {
+	display: inline-block;
+}
+
+.reg_captcha {
+	width: 100px;
+	font: 19px sans-serif;
+	margin-top: 10px;
+	border-radius: .25rem;
+	transition: .2s;
+	color: #495057;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+	line-height: 1.5;
+}
+
+.block-captcha p {
+	margin-top: 0;
+	font: bold 13px sans-serif;
+	text-decoration: underline;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.block-captcha p:hover {
+	text-decoration: none;
+}
+
+.block-captcha {
+	position: relative;
+	margin-bottom: : 20px;
+}
+
+.error {
+	color: #cc0063;
+	font-family: italic;
+}
