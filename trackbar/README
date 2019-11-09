@@ -1,0 +1,18 @@
+ FC-TrackBar
+ 
+ Initial copyright © 2008 by Alexander Burtsev - fastcoder.org
+ and abarmot - http://abarmot.habrahabr.ru/
+ and 1602 - http://1602.habrahabr.ru/ [jQuery plugin]
+ designed by Svetlana Solov'eva - http://avis-solo.blogspot.com/
+ 
+ 
+ This code is a public domain.
+  
+ Доработанная версия слайдеров FC-TrackBar (Fastcoder TrackBar).
+ Оригинальный исходный код взят с http://sourceforge.net/projects/fc-trackbar/
+ Основные изменения:
+ * Добавлен метод onMoveEnd (вызывается при окончании перемещения ползунка).
+ * Исправлена ошибка неверной инициализации правого ползунка при установленном значении, равном 0.
+ 
+ 
+ jQuery-версия скрипта не дорабатывалась и в репозиторий не включена.
