@@ -61,10 +61,12 @@
 
 </head>
 <body>
+  <div id="progressbar"></div>
 <div class="wrapper">
 <?php require 'templates/header.php' ?>
 
-<div class="container">
+<div class="content">
+  <div class="container">
   
   <?php if ($_SESSION['admin'] == 1) { ?>
       <div class="add_item">
@@ -175,26 +177,6 @@
 
   <ul class="products-list clearfix">
   <?php 
-         echo '
-          <div class="sorting">
-            <p class="nav-breadcrumbs"><a href="index.php">Главная страница</a> \ <span>Поиск</span></p>
-            <ul class="option-list">
-              <li>Вид: </li>
-              <li><a href="#" class="style-grid active"><i class="fa fa-th"></i></a></li>
-              <li><a href="#" class="style-list"><i class="fa fa-list-ul"></i></a></li>
-              <li>Сортировать:</li>
-              <li><a class="select-sort" href="#">'.$sort_name.'</a>
-                <ul class="sorting-list">
-                  <li><a href="search.php?q='.$search.'&sort=price-asc">От дешевых к дорогим</a></li>
-                  <li><a href="search.php?q='.$search.'&sort=price-desc">От дорогих к дешевым</a></li>
-                  <li><a href="search.php?q='.$search.'&sort=popular">Популярное</a></li>
-                  <li><a href="search.php?q='.$search.'&sort=new">Новинки</a></li>
-                  <li><a href="search.php?q='.$search.'&sort=brand">По алфавиту</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-         ';
       $result = mysqli_query($connection , "SELECT * FROM products WHERE title LIKE '%$search%' AND  visible='1' ORDER BY $sorting $query_start_num");
       if (mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_array($result);
@@ -303,7 +285,7 @@
 
 
 <?php require 'templates/footer.php' ?>
-<?php echo $total; ?>
+</div> <!-- end of content -->
 </div>
   
 <?php require 'templates/scripts.php' ?>

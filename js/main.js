@@ -55,4 +55,38 @@ $(document).ready(function() {
         rightValue : 100000,
         roundUp : 1000,
       });
-    });
+
+	$('.menu_hamb_btn').on('click', function(e) {
+	  e.preventDefault();
+	  $('.menu_hamb').toggleClass('menu_active');
+	  $('.content').toggleClass('content_active');
+	})
+
+	$('.menu_hamb_btn').on('click', function(e) {
+	  e.preventDefault;
+	  $(this).toggleClass('menu_hamb_btn_active');
+	});
+
+
+ });
+
+const wrapper = document.querySelector(".input-wrapper"),
+      textInput = document.querySelector("input[type='text']");
+        
+textInput.addEventListener("keyup", event => {
+  wrapper.setAttribute("data-text", event.target.value);
+
+});
+
+//PROGRESSBAR
+  $(window).scroll(function(){
+  	var scroll = $(window).scrollTop(),
+  	dh = $(document).height(),
+  	wh = $(window).height();
+  	scrollPercent = (scroll / (dh - wh)) * 100;
+  	$('#progressbar').css('height',  scrollPercent + '%'); 
+  });
+
+
+
+

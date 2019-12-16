@@ -18,7 +18,7 @@ a:hover {
 	text-decoration: underline !important;
 }
 
-.content {
+.content-sorting {
 	margin-top: 50px;
 }
 
@@ -174,7 +174,7 @@ a.button:hover {
 }
 
 .title-grid > a:hover {
-	rgb(210, 10, 100);
+	color: rgb(210, 10, 100);
 }
 
 .image-grid {
@@ -260,7 +260,7 @@ a.button:hover {
 
 .reviews-comment-list {
 	position: absolute;
-	margin-left: 780px;
+	right: 0;
 }
 
 .reviews-comment-list > li {
@@ -292,7 +292,7 @@ a.button:hover {
 }
 
 .title-list > a:hover {
-	rgb(210, 10, 100);
+	color: rgb(210, 10, 100);
 }
 
 .add-to-cart-list {
@@ -338,7 +338,6 @@ a.button:hover {
 }
 
 .view-block{
-	margin-top: 80px;
 }
 
 .block-categories {
@@ -777,7 +776,9 @@ div.tabs_content > div {
 
 /* md-устройства (больше или равно 768px) */
 @media (min-width: 768px) and (max-width: 991px) {
-  
+  .title-list {
+  	max-width: 450px;
+  }
 }
  
 /* lg-устройства (больше или равно 992px) */

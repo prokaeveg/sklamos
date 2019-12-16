@@ -8,11 +8,13 @@ body {
 	margin: auto;
 }
 
-.content {
+.content-tou {
 	border: 1px solid #ddd;
 	padding: 10px 15px;
 	margin-bottom: 20px;
 	min-height: 100%;
+	margin-top: 35px;
+	margin-bottom: 15px;
 }
 
 .page-header {

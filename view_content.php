@@ -21,36 +21,43 @@
     $row = mysqli_fetch_array($result);
   }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><?php echo $row['title']; ?></title>
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/logout.css">
-  <link rel="stylesheet" src="fancybox/jquery.fancybox.css"></link>
-  <link rel="stylesheet" href="trackbar/trackbar.css">
-  <link rel="stylesheet" href="css/products.css">
+  <!DOCTYPE html>
+  <html lang="en">
 
-</head>
-<body>
-<div class="wrapper">
-<?php require 'templates/header.php' ?>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      <?php echo $row['title']; ?>
+    </title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" src="fancybox/jquery.fancybox.css"></link>
+    <link rel="stylesheet" href="trackbar/trackbar.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/view_cat.css">
 
-<div class="container">
-  
-  <?php if ($_SESSION['admin'] == 1) { ?>
-      <div class="add_item">
-        <a href="admin.php" class="button">Админ панель</a>
-      </div>
-      <?php } ?>
-<div class="row">
-  <div class="col-md-9">
-    <?php   
+  </head>
+
+  <body>
+    <div id="progressbar"></div>
+    <div class="wrapper">
+      <?php require 'templates/header.php' ?>
+        <div class="content">
+
+          <div class="container">
+
+            <?php if ($_SESSION['admin'] == 1) { ?>
+              <div class="add_item">
+                <a href="admin.php" class="button">Админ панель</a>
+              </div>
+              <?php } ?>
+                <div class="row">
+                  <div class="col-md-9">
+                    <?php   
 
 
       $result = mysqli_query($connection , "SELECT * FROM products WHERE visible='1' AND product_id = '$id'");
@@ -169,30 +176,35 @@
 
     ?>
 
-  </div>
-  <div class="col-md-3">
-    <div class="block-right">
-      <?php require 'templates/categories.php';
+                  </div>
+                  <div class="col-md-3">
+                    <div class="block-right">
+                      <?php require 'templates/categories.php';
       require 'templates/parameters.php' ;
       require 'templates/news.php'?>
+                    </div>
+                  </div>
+                </div>
+          </div>
+
+          <?php require 'templates/footer.php' ?>
+            <?php echo $total; ?>
+        </div>
     </div>
-  </div>
-</div>
-</div>
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".image-modal").fancybox();
+        $(".send-review").fancybox();
+        $("ul.tabs").jTabs({
+          content: ".tabs_content",
+          animate: true,
+          effect: "fade"
+        });
+      });
+    </script>
+    <?php require 'templates/scripts.php' ?>
 
-<?php require 'templates/footer.php' ?>
-<?php echo $total; ?>
-</div>
-  
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".image-modal").fancybox();
-    $(".send-review").fancybox();
-    $("ul.tabs").jTabs({content: ".tabs_content", animate: true, effect:"fade"});
-  }); 
-</script>
-<?php require 'templates/scripts.php' ?>
-   
-</body>
-</html>
+  </body>
+
+  </html>

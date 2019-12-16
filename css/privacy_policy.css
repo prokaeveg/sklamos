@@ -8,11 +8,13 @@ body {
 	margin: auto;
 }
 
-.content {
+.content-pp {
 	border: 1px solid #ddd;
 	padding: 10px 15px;
 	margin-bottom: 20px;
 	min-height: 100%;
+	margin-top: 35px;
+	margin-bottom: 15px;
 }
 
 .page-header {
@@ -25,10 +27,6 @@ body {
 	border-bottom: 1px solid #eee;
 }
 
-.header {
-	height: 60px;
-	background-color: #fff;
-}
 
 .article ul li {
 	list-style-type: disc;

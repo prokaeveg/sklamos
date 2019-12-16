@@ -52,10 +52,10 @@ if(!empty($_SESSION['auth']))
 		} 
 	    
 	    
-	        if(!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i",trim($_POST["lk_email"])))
-		{
-			$error[]='Укажите корректный email!';
-		}
+	 //        if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix",trim($_POST["lk_email"])));
+		// {
+		// 	$error[]='Укажите корректный email!';
+		// }
 	    
 	      if(strlen($_POST["lk_phone"]) == "")
 		{
@@ -82,7 +82,6 @@ if(!empty($_SESSION['auth']))
 	 		$row = mysqli_fetch_array($result);
 			$_SESSION['auth'] = true;
 			$_SESSION['login'] = $row['username'];
-			$_SESSION['pass'] = $row['password'];
 			$_SESSION['surname'] = $row['surname'];
 			$_SESSION['name'] = $row['name'];
 			$_SESSION['phone'] = $row['phone'];
@@ -95,26 +94,29 @@ if(!empty($_SESSION['auth']))
         
      } 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Личный кабинет</title>
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/logout.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/lk.css">
-</head>
+  <!DOCTYPE html>
+  <html lang="en">
 
-<body>
-<div class="wrapper">
-	<?php require 'templates/header.php' ?>
+  <head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lk.css">
+  </head>
 
-	<div class="container">	
-		<?php 
+  <body>
+    <div id="progressbar"></div>
+    <div class="wrapper">
+      <?php require 'templates/header.php' ?>
+        <div class="content">
+
+          <div class="container">
+            <div class="page_name_hamb">Личный кабинет</div>
+            <?php 
 	      	$result = mysqli_query($connection, "SELECT * FROM users");
 		    if (mysqli_num_rows($result) > 0){
 			    $row = mysqli_fetch_array($result);
@@ -137,71 +139,75 @@ if(!empty($_SESSION['auth']))
 			    }
 			}
 	    ?>
-		<div class="mainInfo">
-			<div class="photo">
-				<img src="<?php echo $img_path ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" alt="profile photo">
-			</div>
-			<div class="username">	
-				<p><strong>Пользователь: </strong><?php echo $_SESSION['login'] ?></p>
-			</div>
-		</div>
-		<h2>Изменение профиля</h2>
-		<?php 
+              <div class="mainInfo">
+                <div class="photo">
+                  <img src="<?php echo $img_path ?>" width="<?php echo $width ?>" height="<?php echo $height ?>" alt="profile photo">
+                </div>
+                <div class="username">
+                  <p><strong>Пользователь: </strong>
+                    <?php echo $_SESSION['login'] ?>
+                  </p>
+                </div>
+              </div>
+              <h2>Изменение профиля</h2>
+              <?php 
 			if ($_SESSION['msg']){
 				echo $_SESSION['msg'];
 				unset($_SESSION['msg']);
 			}
 		 ?>
-		<form action="" method="POST">
-			<ul class="info-profile">
-				<li>
-					<label for="lk_pass">Текущий пароль</label>
-					<span class="star">*</span>
-					<input type="password" name="lk_pass" id="lk_pass" value="" />
-				</li>
-				<li>
-					<label for="lk_new_pass">Новый пароль</label>
-					<input type="password" name="lk_new_pass" id="lk_new_pass" value="" />
-				</li>
-				<li>
-					<label for="lk_email">E-mail</label>
-					<span class="star">*</span>
-					<input type="text" name="lk_email" id="lk_email" value="<?php echo $_SESSION['email'] ?>" />
-				</li>
-				<li>
-					<label for="lk_name">Имя</label>
-					<span class="star">*</span>
-					<input type="text" name="lk_name" id="lk_name" value="<?php echo $_SESSION['name'] ?>" />
-				</li>
-				<li>
-					<label for="lk_surname">Фамилия</label>
-					<span class="star">*</span>
-					<input type="text" name="lk_surname" id="lk_surname" value="<?php echo $_SESSION['surname'] ?>" />
-				</li>
-				<li>
-					<label for="lk_phone">Телефон</label>
-					<span class="star">*</span>
-					<input type="text" name="lk_phone" id="lk_phone" value="<?php echo $_SESSION['phone'] ?>" />
-				</li>
-			</ul>
-			<input type="submit" class="lk_form_submit" name="save_submit" value="Сохранить">
-		</form>
-	</div>
-
-
-
-
-
-
-	<?php 	require 'templates/footer.php' ?>
+                <form method="POST" id="form">
+                  <ul class="info-profile">
+                    <li>
+                      <input type="hidden" name="title" value="Изменения в личном кабинете" />
+                    </li>
+                    <li>
+                      <label for="lk_pass">Текущий пароль</label>
+                      <span class="star">*</span>
+                      <input type="password" name="lk_pass" id="lk_pass" value="" />
+                    </li>
+                    <li>
+                      <label for="lk_new_pass">Новый пароль</label>
+                      <input type="password" name="lk_new_pass" id="lk_new_pass" value="" />
+                    </li>
+                    <li>
+                      <label for="lk_email">E-mail</label>
+                      <span class="star">*</span>
+                      <input type="text" name="lk_email" id="lk_email" value="<?php echo $_SESSION['email'] ?>" />
+                    </li>
+                    <li>
+                      <label for="lk_name">Имя</label>
+                      <span class="star">*</span>
+                      <input type="text" name="lk_name" id="lk_name" value="<?php echo $_SESSION['name'] ?>" />
+                    </li>
+                    <li>
+                      <label for="lk_surname">Фамилия</label>
+                      <span class="star">*</span>
+                      <input type="text" name="lk_surname" id="lk_surname" value="<?php echo $_SESSION['surname'] ?>" />
+                    </li>
+                    <li>
+                      <label for="lk_phone">Телефон</label>
+                      <span class="star">*</span>
+                      <input type="text" name="lk_phone" id="lk_phone" value="<?php echo $_SESSION['phone'] ?>" />
+                    </li>
+                  </ul>
+                  <input type="submit" class="lk_form_submit" name="save_submit" value="Сохранить">
+                </form>
+          </div>
+          <div class="container">
 </div>
-<?php require 'templates/scripts.php' ?>
-</body>
-</html>
-<?php 
+
+          <?php 	require 'templates/footer.php' ?>
+        </div>
+    </div>
+    <?php require 'templates/scripts.php' ?>
+      <?php 
   } else {
  ?>
-    <p> please <a href="login.php">login</a></p>
-<?php 
+        <p> please <a href="login.php">login</a></p>
+        <?php 
   }
  ?>
+  </body>
+
+  </html>

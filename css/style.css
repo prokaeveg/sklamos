@@ -11,6 +11,84 @@ html, body {
 	height: 100%;	
 }
 
+.wrapper {
+	overflow-x: hidden;
+	position: relative;
+}
+
+/*
+
+		PRELOADER
+
+*/
+
+/*
+
+		SCROLLBAR
+
+*/
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+#progressbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 15px;
+	background: linear-gradient(to top, #fcb045, #fd1d1d, #833ab4);
+	z-index: 100;
+}
+
+/*
+
+		404 ERROR
+
+*/
+.error_404 {
+	min-height: 100vh;
+	background: linear-gradient(125deg, #6a89cc, #b8e994);
+}
+
+.container_error {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	color: #343434;
+}
+.container_error h1 {
+	font-size: 260px;
+	margin: 0;
+	font-weight: 900;
+	letter-spacing: 20px;
+	background: url(../img/404/bg.jpg) center no-repeat;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+.container_error a {
+	text-decoration: none;
+	background: #e55039aa;
+	color: #fff;
+	padding: 12px 24px;
+	display: inline-block;
+	border-radius: 25px;
+	font-size: 14px;
+	text-transform: uppercase;
+	transition: .4s;
+}
+
+.container_error a:hover {
+	text-decoration: none;
+	background: #e55039;
+	color: #fff;
+	transform: scale(1.1);
+}
+
 /*........................
 
 NAV
@@ -19,11 +97,23 @@ NAV
 
 
 .logo {
-	font-size: 22px;
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
 	color: #041122;
-	font-weight: 600;
+	font-weight: 700;
 	text-transform: uppercase;
-	margin-left: 15px
+}
+
+.hidden {
+	max-width: 0;
+	opacity: 0;
+	transition: .5s ease-in;
+}
+
+.logo:hover .hidden {
+	opacity: 1;
+	max-width: 1em;
 }
 
 .nav-wrapper {
@@ -37,19 +127,61 @@ NAV
 	padding-top: 5px;
 }
 
-.navigation a{
+.navigation ul {
+	display: flex;
+}
+
+.navigation ul li {
+	display: flex;
+	transition: .5s;
+}
+
+.navigation ul:hover li a {
+	transform: scale(1.3);
+	opacity: .2;
+	filter: blur(5px);
+}
+
+.navigation ul li a{
 	color: #52575D;
+	display: block;
+	transition: .5s;
+}
+
+.navigation ul li a:hover{
+	padding: 0 4px;
+	transform: scale(2);
+	opacity: 1;
+	filter: blur(0);
+	text-decoration: none !important;
+}
+
+.navigation ul li a:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgb(247, 36, 100);
+	width: 100%;
+	height: 100%;
+	transition: transform .5s;
+	transform-origin: right;
+	transform: scaleX(0);
+	z-index: -1;
+}
+
+.navigation ul li a:hover:before{
+	transition: transform .5s;
+	transform-origin: left;
+	transform: scaleX(1);
 }
 
 .navigation-link {
+	color: #52575D;
 	text-decoration: none !important;
 	margin-right: 30px;
 }
 
-.navigation-link:hover  {
-	color: #f72464;
-	text-decoration: underline !important;
-}
 
 .logout {
 	color: #52575D; 
@@ -257,6 +389,236 @@ NAV
 	top: 22px;
 }
 
+/*
+
+		MENU HAMBURGER 
+
+*/
+
+
+.logo_hamb {
+	position: absolute;
+	top: 10px;
+	font-size: 35px;
+	font-weight: 600;
+	text-transform: uppercase;
+	cursor: default;
+}
+
+.search_hamb {
+	margin-top: 20px;
+}
+
+.dropdown {
+	position: relative;
+}
+
+
+.menu_hamb {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	width: 30%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	transition: 0.5s;
+	transform: translateX(-100%);
+}
+
+.nav_links_hamb span:first-child {
+	margin-top: 40px;
+}
+
+.menu_hamb span {
+	display: block;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.nav_links_hamb {
+	position: absolute;
+	left: .5rem;
+	top: 11rem;
+}
+
+.menu_active {
+  transform: translateX(0%);
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.menu-list a {
+	color: #52575D;
+	text-transform: uppercase;
+}
+
+.menu-list a:hover {
+	color: #f72464;
+	text-decoration: none;
+}
+
+.menu_hamb_btn {
+  width: 30px;
+  height: 30px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  right: -35px;
+  top: 10px;
+}
+
+.menu_hamb_btn span,
+.menu_hamb_btn span::before,
+.menu_hamb_btn span::after {
+  position: absolute;
+  top: 50%; margin-top: -1px;
+  left: 50%; margin-left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.menu_hamb_btn span::before,
+.menu_hamb_btn span::after {
+  content: '';
+  display: block;
+  transition: 0.2s;
+}
+.menu_hamb_btn span::before {
+  transform: translateY(-5px);
+}
+.menu_hamb_btn span::after {
+  transform: translateY(5px);
+}
+
+.menu_hamb_btn_active span {
+	height: 0;
+}
+
+.menu_hamb_btn_active span:before {
+  transform: rotate(45deg);
+}
+.menu_hamb_btn_active span:after {
+  transform: rotate(-45deg);
+}
+
+.content {
+  transition: 0.5s;
+  position: relative;
+  z-index: 0;
+}
+.content_active {
+  transform: translateX(30%);
+}
+
+.page_name_hamb {
+	display: flex;
+justify-content: center;
+align-items: center;
+font-size: 25px;
+font-weight: 600;
+text-transform: uppercase;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+@media screen and (max-width: 999px) {
+  .nav-wrapper {
+  	padding: 0;
+  	padding-top: 5px;
+  }
+  .lk {
+  	padding: 0;
+  }
+  .navbar-expand-sm,
+  .navbar-nav,
+  .nav-link{
+  	padding: 0;
+  }
+  .menu_lg {
+  	display: none;
+  }
+  h2 {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	font-size: 30px;
+  	font-weight: 700;
+  	margin-bottom: 15px;
+  	margin-top: 10px;
+  }
+  .breadcrums_and_rating {
+  	margin-top: 50px;
+  }
+  .sorting {
+  	margin-top: 50px;
+  }
+  .header-workers {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	font-size: 18px;
+  }
+  .input-wrapper {
+	margin: 50px auto;
+	position: absolute;
+	left: .5rem;
+	top: 3rem;
+}
+
+.input-wrapper::after {
+	content: attr(data-text);
+	font-size: 1.5rem;
+	line-height: 0;
+	height: 0;
+	max-width: 100%;
+	font-family: Roboto, Arial, sans-serif;
+	border-bottom: 3px solid #000;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	overflow: hidden;
+	user-select: none;
+	color: transparent;
+}
+
+.menu_hamb input {
+	height: 50px;
+	color: #000;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	outline: none;
+	font-size: 1.5rem;
+	line-height: 3em;
+	font-family: Roboto, Arial, sans-serif;
+	border-bottom: 3px solid #dbdbdb;
+	background-color: transparent;
+}
+}
+
+@media screen and (min-width: 1000px) {
+  .menu_hamb {
+  	display: none;
+  }
+  .content {
+ 	transform: translateX(0%);
+	}
+	.page_name_hamb {
+        display: none;
+    }
+}
+
+
 
 /*.....................
 
@@ -413,7 +775,7 @@ PRODUCTS
 	display: block;
 	margin-top: -3px;
 	position: absolute;
-	left: 20;
+	left: 20px;
 	top: 0;
 	transition: 0.3s;
 }
@@ -446,7 +808,7 @@ PRODUCTS
 	display: block;
 	margin-top: -3px;
 	position: absolute;
-	left: 20;
+	left: 20px;
 	bottom: 0;
 	transition: 0.3s;
 }
@@ -510,6 +872,10 @@ ul li{
 	text-decoration: none;
 }
 
+.footer-top a:hover{
+	text-decoration: underline;
+}
+
 .footer-bottom {
 	color: #fff;
 	background: #333;
@@ -527,32 +893,56 @@ ul li{
 }
 
 
+
+
 /* sm-устройства (больше или равно 576px) */
 @media (min-width: 576px) and (max-width: 767px) {
   /* CSS для: 576px <= ширины <= 767px */
+	.container {
+		width: 90%;
+		max-width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+	.menu_hamb input {
+		width: 80%;
+	}
+	.input-wrapper::after {
+		width: 80%;
+	}
 }
 
 /* md-устройства (больше или равно 768px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .logo	 {
-  	font-size: 17px;
-  	margin-left: 0;
-  }
-  .navigation {
-  	font-size: 13px;
-  }
-  .navigation-link {
-  	margin-right: 10px;
-  }
-  .input-search {
-  	float: left;
-  }
+@media (min-width: 768px) and (max-width: 999px) {
+	.logo	 {
+		font-size: 17px;
+		margin-left: 0;
+	}
+	.navigation {
+		font-size: 13px;
+	}
+	.navigation-link {
+		margin-right: 10px;
+	}
+	.input-search {
+		float: left;
+	}
+	.container {
+		width: 90%;
+		max-width: 100%;
+	}
+	.menu_hamb input {
+		width: 90%;
+	}
+	.input-wrapper::after {
+		width: 90%;
+	}
 }
  
-/* lg-устройства (больше или равно 992px) */
-@media (min-width: 992px) and (max-width: 1199px) {
+/* lg-устройства (больше или равно 1000px) */
+@media (min-width: 1000px) and (max-width: 1199px) {
 	.container {
-		width: 85%;
+		width: 75%;
 	}
 	.navigation {
 		font-size: 14px;

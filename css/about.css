@@ -23,15 +23,15 @@ body {
 .page-header h1{
 	color: #16a4ec;
 	border-bottom: 1px solid #eee;
+	display: block;
 }
 
 .header {
 	height: 60px;
 	background-color: #fff;
+	display: block;
 }
 
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+.article {
+	display: block;
 }

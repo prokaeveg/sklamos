@@ -8,6 +8,7 @@
 	width: 660px;
 	margin-right: auto;
 	margin-left: auto;
+	margin-bottom: 30px;
 }
 
 
@@ -48,7 +49,7 @@ a.button {
  overflow: hidden;
  border-bottom: 4px solid #e3276c;
  width: 350px;
- height: 50px;
+ min-height: 50px;
 }
 a.button:hover {
  color: #ffffff;
@@ -80,12 +81,6 @@ a.button:hover {
  transition-delay: 0.2s;
 }
 
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
-
 .error_admin_roots {
 	margin-top: 100px;
 	margin-left: 40px;
@@ -101,7 +96,7 @@ a.button:hover {
 .front_user_info {
 	position: absolute;
 	bottom: 0;
-	text-align: middle;
+	text-align: center;
 }
 
 /*
@@ -116,6 +111,7 @@ a.button:hover {
 	margin-left: 20px;
 	float: left;
 	position: relative;
+	margin-bottom: 20px;
 }
 
 .card_user {
@@ -162,27 +158,6 @@ a.button:hover {
 	transform: rotateY(360deg);
 }
 
-input[type="checkbox"] {
-	display: none;
-}
-
-label {
-	padding-left: 20px;
-}
-label::before {
-	content: '';
-	display: inline-block;
-	width: 15px;
-	height: 15px;
-	background-color: red;
-	margin-right: 4px;
-	border-radius: 50%;
-	transition: .3s;
-}
-
-input[type="checkbox"]:checked + label::before {
-	background-color: green;
-}
 
 .frontside {
 	display: flex;
@@ -195,4 +170,26 @@ input[type="checkbox"]:checked + label::before {
 .backside_info{
 	padding-left: 8px;
 	padding-top: 30px;
+}
+
+.container_user input[type="checkbox"] {
+	display: none;
+}
+
+.container_user label {
+	padding-left: 20px;
+}
+.container_user label::before {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+	margin-right: 4px;
+	border-radius: 50%;
+	transition: .3s;
+}
+
+.container_user input[type="checkbox"]:checked + label::before {
+	background-color: green;
 }

@@ -45,39 +45,44 @@
 
   }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Категории</title>
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/products.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/logout.css">
-  <link rel="stylesheet" href="trackbar/trackbar.css">
+  <!DOCTYPE html>
+  <html lang="en">
 
-</head>
-<body>
-<div class="wrapper">
-<?php require 'templates/header.php' ?>
-<div class="container">
-  <?php if ($_SESSION['admin'] == 1) { ?>
-      <div class="add_item">
-        <a href="admin/admin.php" class="button">Админ панель</a>
-      </div>
-      <?php } ?>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Категории</title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="trackbar/trackbar.css">
+    <link rel="stylesheet" href="css/view_cat.css">
 
-<div class="content">
-  <div class="container">
-  
-<div class="row">
-  <div class="col-md-9">
-    <ul class="products-grid clearfix">
-  <?php 
+  </head>
+
+  <body>
+    <div id="progressbar"></div>
+    <div class="wrapper">
+
+      <?php require 'templates/header.php' ?>
+        <div class="content">
+          <div class="container">
+            <?php if ($_SESSION['admin'] == 1) { ?>
+              <div class="add_item">
+                <a href="admin/admin.php" class="button">Админ панель</a>
+              </div>
+              <?php } ?>
+          </div>
+
+          <div class="container">
+
+            <div class="row">
+              <div class="col-md-9">
+                <ul class="products-grid clearfix">
+                  <?php 
 
 
 
@@ -193,10 +198,10 @@
 
    ?>
 
-  </ul>
+                </ul>
 
-  <ul class="products-list clearfix">
-  <?php 
+                <ul class="products-list clearfix">
+                  <?php 
       $result = mysqli_query($connection , "SELECT * FROM products WHERE visible='1' $querycat ORDER BY $sorting $query_start_num");
       if (mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_array($result);
@@ -270,9 +275,9 @@
 
    ?>
 
-  </ul>
+                </ul>
 
-  <?php 
+                <?php 
   if ($page != 1){ $pstr_prev = '<li><a class="pstr-prev" href="view_cat.php?'.$catlink.'sort='.$sort.'&type='.$type.'&page='.($page - 1).'">&lt;</a></li>';}
 if ($page != $total) $pstr_next = '<li><a class="pstr-next" href="view_cat.php?'.$catlink.'sort='.$sort.'&type='.$type.'&page='.($page + 1).'">&gt;</a></li>';
 
@@ -311,40 +316,38 @@ if ($total > 1)
     ';
 }
  ?>
-  </div>
-    <div class="col-md-3 view-block">
-      <div class="block-right">
-        <?php require 'templates/categories.php';
+              </div>
+              <div class="col-md-3 view-block">
+                <div class="block-right">
+                  <?php require 'templates/categories.php';
         require 'templates/parameters.php' ;
         require 'templates/news.php'?>
-      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <?php require 'templates/footer.php' ?>
+        </div>
     </div>
-  </div>
-</div>
-</div>
 
+    <?php require 'templates/scripts.php' ?>
+      <script type="text/javascript">
+        trackbar.getObject('one').init({
+            onMove: function() {
+              document.getElementById("start-price").value = this.leftValue;
+              document.getElementById("end-price").value = this.rightValue;
+            },
+            width: 160,
+            leftLimit: 1000,
+            leftValue: 1000,
+            rightLimit: 50000,
+            rightValue: 30000,
+            roundUp: 1000
+          },
+          "trackbar"
+        );
+      </script>
+  </body>
 
-<?php require 'templates/footer.php' ?>
-</div>
-  
-  <?php require 'templates/scripts.php' ?>
-   <script type="text/javascript">
-    trackbar.getObject('one').init(
-     {
-         onMove : function() {
-      document.getElementById("start-price").value = this.leftValue;
-      document.getElementById("end-price").value = this.rightValue;
-      },
-          width : 160,
-      leftLimit : 1000,
-      leftValue : 1000,
-      rightLimit : 50000,
-      rightValue : 30000,
-      roundUp : 1000
-     },
-     "trackbar"
-    
-);
-</script>
-</body>
-</html>
+  </html>

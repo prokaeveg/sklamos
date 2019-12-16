@@ -41,65 +41,69 @@
 
   }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Товары</title>
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
-  <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/logout.css">
-  <link rel="stylesheet" href="trackbar/trackbar.css">
-  <link rel="stylesheet" href="css/products.css">
+  <!DOCTYPE html>
+  <html lang="en">
 
-</head>
-<body>
-<div class="wrapper">
-<?php require 'templates/header.php' ?>
+  <head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css&family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="trackbar/trackbar.css">
+    <link rel="stylesheet" href="css/products.css">
 
-<div class="container">
-  
-  <?php if ($_SESSION['admin'] == 1) { ?>
-      <div class="add_item">
-        <a href="admin/admin.php" class="button">Админ панель</a>
-      </div>
-      <?php } ?>
-  <div class="content">
-    <div class="sorting">
-      
-      
+  </head>
 
-      <p class="nav-breadcrumbs"><a href="index.php">Главная страница</a> \ <span>Все товары</span></p>
-      
-      <ul class="option-list">
-        <li>Вид: </li>
-        <li><a href="#" class="style-grid active"><i class="fa fa-th"></i></a></li>
-        <li><a href="#" class="style-list"><i class="fa fa-list-ul"></i></a></li>
+  <body>
+    <div id="progressbar"></div>
+    <div class="wrapper">
+      <?php require 'templates/header.php' ?>
 
-        <li>Сортировать:</li>
-        <li><a class="select-sort" href="#"><?php echo $sort_name; ?></a>
-          <ul class="sorting-list">
-            <li><a href="products.php?sort=price-asc">От дешевых к дорогим</a></li>
-            <li><a href="products.php?sort=price-desc">От дорогих к дешевым</a></li>
-            <li><a href="products.php?sort=popular">Популярное</a></li>
-            <li><a href="products.php?sort=new">Новинки</a></li>
-            <li><a href="products.php?sort=brand">По алфавиту</a></li>
-          </ul>
-        </li>
+        <div class="content">
+          <div class="container">
 
-      </ul>
+            <?php if ($_SESSION['admin'] == 1) { ?>
+              <div class="add_item">
+                <a href="admin/admin.php" class="button">Админ панель</a>
+              </div>
+              <?php } ?>
+                <div class="content-sorting">
+                  <div class="sorting">
 
-    </div>
+                    <p class="nav-breadcrumbs"><a href="index.php">Главная страница</a> \ <span>Все товары</span></p>
 
+                    <ul class="option-list">
+                      <li>Вид: </li>
+                      <li><a href="#" class="style-grid active"><i class="fa fa-th"></i></a></li>
+                      <li><a href="#" class="style-list"><i class="fa fa-list-ul"></i></a></li>
 
-  </div>
-<div class="row">
-  <div class="col-md-9">
-    <ul class="products-grid clearfix">
-  <?php 
+                      <li>Сортировать:</li>
+                      <li>
+                        <a class="select-sort" href="#">
+                          <?php echo $sort_name; ?>
+                        </a>
+                        <ul class="sorting-list">
+                          <li><a href="products.php?sort=price-asc">От дешевых к дорогим</a></li>
+                          <li><a href="products.php?sort=price-desc">От дорогих к дешевым</a></li>
+                          <li><a href="products.php?sort=popular">Популярное</a></li>
+                          <li><a href="products.php?sort=new">Новинки</a></li>
+                          <li><a href="products.php?sort=brand">По алфавиту</a></li>
+                        </ul>
+                      </li>
+
+                    </ul>
+
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-9">
+                    <ul class="products-grid clearfix">
+                      <?php 
 
       $num = 10;
       $page = (int)($_GET['page']);
@@ -168,10 +172,10 @@
 
    ?>
 
-  </ul>
+                    </ul>
 
-  <ul class="products-list clearfix">
-  <?php 
+                    <ul class="products-list clearfix">
+                      <?php 
       $result = mysqli_query($connection , "SELECT * FROM products WHERE visible='1' ORDER BY $sorting $query_start_num");
       if (mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_array($result);
@@ -259,23 +263,23 @@ if ($total > 1)
 
    ?>
 
-  </div>
-  <div class="col-md-3">
-    <div class="block-right">
-      <?php require 'templates/categories.php';
+                  </div>
+                  <div class="col-md-3">
+                    <div class="block-right">
+                      <?php require 'templates/categories.php';
       require 'templates/parameters.php' ;
       require 'templates/news.php'?>
+                    </div>
+                  </div>
+                </div>
+          </div>
+
+          <?php require 'templates/footer.php' ?>
+        </div>
     </div>
-  </div>
-</div>
-</div>
 
+    <?php require 'templates/scripts.php' ?>
 
-<?php require 'templates/footer.php' ?>
-<?php echo $total; ?>
-</div>
-  
-<?php require 'templates/scripts.php' ?>
-   
-</body>
-</html>
+  </body>
+
+  </html>
